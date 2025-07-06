@@ -1,6 +1,16 @@
+const getBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    // Client side - use relative URL
+    return '';
+  }
+  // Server side - use full URL
+  return process.env.NEXT_PUBLIC_STORE_URL || 'http://localhost:3001';
+};
+
 export const getCollections = async () => {
   try {
-    const collections = await fetch(`/api/collections`)
+    const baseUrl = getBaseUrl();
+    const collections = await fetch(`${baseUrl}/api/collections`)
     if (!collections.ok) {
       throw new Error(`Failed to fetch collections: ${collections.status}`);
     }
@@ -13,7 +23,8 @@ export const getCollections = async () => {
 
 export const getProduct = async () => {
   try {
-    const products = await fetch(`/api/products`)
+    const baseUrl = getBaseUrl();
+    const products = await fetch(`${baseUrl}/api/products`)
     if (!products.ok) {
       throw new Error(`Failed to fetch products: ${products.status}`);
     }
@@ -26,7 +37,8 @@ export const getProduct = async () => {
 
 export const getProductDetails = async (productId: string) => {
   try {
-    const product = await fetch(`/api/products/${productId}`)
+    const baseUrl = getBaseUrl();
+    const product = await fetch(`${baseUrl}/api/products/${productId}`)
     if (!product.ok) {
       throw new Error(`Failed to fetch product: ${product.status}`);
     }
