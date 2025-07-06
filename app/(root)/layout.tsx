@@ -35,8 +35,8 @@ export default function RootLayout({
         >
           <ToasterProvider />
           <UserSyncWrapper>
-            <Navbar/>
-            {children}
+          <Navbar/>
+          {children}
             <Footer />
           </UserSyncWrapper>
         </body>
