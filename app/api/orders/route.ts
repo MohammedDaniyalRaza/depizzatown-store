@@ -79,16 +79,37 @@ export const POST = async (req: NextRequest) => {
         
         // Sync order to admin panel
         try {
-            await fetch('http://localhost:3000/api/orders', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
+            const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3000';
+            await fetch(`${adminUrl}/api/orders`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
                 body: JSON.stringify({
-                    ...order.toObject(),
-                    _id: undefined, // Let admin DB generate its own ID
-                })
+                    orderId: order._id,
+                    customerClerkId: userId,
+                    customerEmail: customer.email,
+                    customerName: customer.name,
+                    products: cartItems.map((item: any) => ({
+                        product: {
+                            _id: item.id,
+                            title: item.title,
+                            price: item.price,
+                            image: item.image
+                        },
+                        color: item.color,
+                        size: item.size,
+                        quantity: item.quantity
+                    })),
+                    totalAmount: finalTotal,
+                    shippingAddress,
+                    phoneNumber,
+                    paymentMethod: "COD",
+                    status: "pending"
+                }),
             });
-        } catch (syncErr) {
-            console.error("[orders_POST] Failed to sync with admin panel:", syncErr);
+        } catch (error) {
+            console.error('Failed to sync order to admin panel:', error);
         }
         
         return NextResponse.json({

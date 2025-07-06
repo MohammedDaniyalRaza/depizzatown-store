@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const response = await fetch('http://localhost:3000/api/collections', {
+    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3000';
+    const response = await fetch(`${adminUrl}/api/collections`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -14,9 +15,9 @@ export async function GET() {
     }
 
     const collections = await response.json();
-    return Response.json(collections);
+    return NextResponse.json(collections);
   } catch (error) {
     console.error('Error fetching collections:', error);
-    return Response.json({ error: 'Failed to fetch collections' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch collections' }, { status: 500 });
   }
 } 

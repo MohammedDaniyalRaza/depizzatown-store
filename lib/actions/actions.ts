@@ -1,6 +1,6 @@
 export const getCollections = async () => {
   try {
-    const collections = await fetch(`http://localhost:3001/api/collections`)
+    const collections = await fetch(`/api/collections`)
     if (!collections.ok) {
       throw new Error(`Failed to fetch collections: ${collections.status}`);
     }
@@ -13,7 +13,7 @@ export const getCollections = async () => {
 
 export const getProduct = async () => {
   try {
-    const products = await fetch(`http://localhost:3001/api/products`)
+    const products = await fetch(`/api/products`)
     if (!products.ok) {
       throw new Error(`Failed to fetch products: ${products.status}`);
     }
@@ -26,7 +26,7 @@ export const getProduct = async () => {
 
 export const getProductDetails = async (productId: string) => {
   try {
-    const product = await fetch(`http://localhost:3001/api/products/${productId}`)
+    const product = await fetch(`/api/products/${productId}`)
     if (!product.ok) {
       throw new Error(`Failed to fetch product: ${product.status}`);
     }
