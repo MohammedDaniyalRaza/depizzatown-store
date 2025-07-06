@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DePizzaTown Store 🍕
 
-## Getting Started
+A premium, modern pizza store web app for Pakistan, built with Next.js. Enjoy a beautiful shopping experience, local checkout, and smooth order management.
 
-First, run the development server:
+---
 
+## 🚀 Project Overview
+DePizzaTown Store is a customer-facing pizza ordering platform with a focus on:
+- Premium, responsive UI/UX
+- Localized checkout (Cash on Delivery, Pakistan phone/city)
+- Clerk authentication
+- Order tracking and wishlist
+- Scalable, clean codebase
+
+---
+
+## ✨ Key Features
+- **Product Browsing:** Explore pizzas and collections, fetched from an admin panel
+- **Cart:** Add, remove, and update items with a premium animated UI
+- **Checkout:**
+  - Cash on Delivery (COD) only
+  - Phone number: +92, 10 digits starting with 3 (Pakistan)
+  - Country: Static (Pakistan)
+  - City: Dropdown (Karachi, ready for more)
+  - Name/email pre-filled from Clerk, editable
+  - All fields validated, clear error messages
+- **Authentication:** Clerk integration for secure login/signup
+- **Order Tracking:** View order history with a beautiful, animated orders page
+- **Wishlist:** Save products for later
+- **Premium UI:** Black, white, and red theme, soft shadows, smooth transitions, fully responsive
+
+---
+
+## 🛠️ Tech Stack
+- **Frontend:** Next.js (App Router, React)
+- **Auth:** Clerk
+- **State Management:** Zustand
+- **Database:** MongoDB (Mongoose)
+- **Styling:** Tailwind CSS
+
+---
+
+## 🗄️ Database Structure
+- **DePizzaTown_Admin:**
+  - Products, collections, orders, customers (managed by admin panel)
+- **DePizzaTown_Store:**
+  - Orders, users (storefront)
+- Products/collections are managed in admin DB and reflected in store
+- Orders/users are stored in store DB; admin panel fetches them for management
+
+---
+
+## 🏃‍♂️ Running Locally
+1. Clone the repo:
+   ```bash
+   git clone <your-repo-url>
+   cd depizzatown-store
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up environment variables for MongoDB and Clerk (see `.env.example` if available)
+4. Run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+5. Visit [http://localhost:3000](http://localhost:3000)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔮 Future Plans
+- Add more cities/branches (expand city dropdown)
+- Add online payment methods (Stripe, etc.)
+- Admin dashboard for order management
+- More product categories and offers
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 👤 Credits
+- **Author:** [Your Name]
+- **Design & Code:** DePizzaTown Team
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Enjoy your premium pizza shopping experience! 🍕
