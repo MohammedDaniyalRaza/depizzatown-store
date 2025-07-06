@@ -2,7 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const response = await fetch('http://localhost:3000/api/products', {
+    const adminUrl = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3000';
+    console.log('Products API: Fetching from admin panel at:', adminUrl);
+    
+    const response = await fetch(`${adminUrl}/api/products`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -10,13 +13,15 @@ export async function GET() {
     });
 
     if (!response.ok) {
+      console.error('Products API: Admin panel response error:', response.status, response.statusText);
       throw new Error(`Failed to fetch products: ${response.status}`);
     }
 
     const products = await response.json();
-    return Response.json(products);
+    console.log('Products API: Successfully fetched', products.length, 'products');
+    return NextResponse.json(products);
   } catch (error) {
     console.error('Error fetching products:', error);
-    return Response.json({ error: 'Failed to fetch products' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch products' }, { status: 500 });
   }
 } 
