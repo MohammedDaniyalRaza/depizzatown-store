@@ -125,24 +125,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
-        {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="max-w-md mx-auto text-center">
-            <h3 className="text-lg font-bold text-white mb-3">Stay Updated</h3>
-            <p className="text-gray-400 mb-4">Subscribe to our newsletter for the latest updates and special offers.</p>
-            <div className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 text-white placeholder-gray-400"
-              />
-              <button className="px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Bottom Bar */}
@@ -154,7 +136,7 @@ const Footer = () => {
             </div>
             
             <div className="flex items-center gap-6 text-sm">
-              <span className="text-gray-400">Made with ❤️ in Pakistan</span>
+              <span className="text-gray-400">Made By Mohammed Daniyal Raza</span>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
                 <span className="text-green-400">Online Now</span>
